@@ -206,9 +206,9 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
 ## Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+bindsym Print exec --no-startup-id "maim $HOME/Pictures/screenshot-$(date +'%m-%d-%Y-%R').jpg"
+bindsym $mod+Print exec --no-startup-id "maim --window $(xdotool getactivewindow) $HOME/Pictures/screenshot-$(date +'%m-%d-%Y-%R').jpg"
+bindsym Shift+Print exec --no-startup-id "maim --select $HOME/Pictures/screenshot-$(date +'%m-%d-%Y-%R').jpg"
 
 ## Clipboard Screenshots
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
@@ -219,7 +219,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Set Wallpaper
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/.config/pictures/wallpaper.jpg
 
 # Add fancy gaps
 gaps inner 10
@@ -229,13 +229,17 @@ gaps outer 0
 default_border pixel 2
 
 # i3 lock
-bindsym $mod+shift+x exec i3lock
+bindsym $mod+shift+x exec $HOME/.config/i3/lock.sh
 
-# startup applications
+# assign workspace
 assign [class="Signal"] $ws10
 assign [class="Habitica"] $ws10
-# assign [class="firefox"] $ws1
+assign [class="Blueman-manager"] $ws9
+
+# startup applications
 exec --no-startup-id desktop-habitica
-exec --no-startup-id signal-deskop
+exec --no-startup-id signal-desktop
+exec --no-startup-id blueman-manager
+
+exec --no-startup-id firefox
 exec --no-startup-id picom
-#exec --no-startup-id firefox
