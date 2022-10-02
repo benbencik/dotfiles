@@ -1,4 +1,4 @@
-xorg-backlight tree termdown dmenu blueman nmtui net-tools maim xclip brightnessctl feh polybar xrandr picom xdotool
+xorg-backlight tree termdown dmenu blueman nmtui net-tools maim xclip brightnessctl feh polybar xrandr picom xdotool imagemagick
 
 ---------------------------------------------------------
 
@@ -17,4 +17,4 @@ polybar  # creates nice status bar
 xrandr
 picom  # opacity and nice transitions
 xdotool  # gets information about display
-
+imagemagick  # blurring image and stuff

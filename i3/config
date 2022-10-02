@@ -203,15 +203,15 @@ bindsym XF86MonBrightnessDown exec "brightnessctl set 5%-; notify-send 'brightne
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
-## Screenshots
+# Screenshots
 bindsym Print exec --no-startup-id "maim $HOME/Pictures/screenshot-$(date +'%m-%d-%Y-%R').jpg"
 bindsym $mod+Print exec --no-startup-id "maim --window $(xdotool getactivewindow) $HOME/Pictures/screenshot-$(date +'%m-%d-%Y-%R').jpg"
 bindsym Shift+Print exec --no-startup-id "maim --select $HOME/Pictures/screenshot-$(date +'%m-%d-%Y-%R').jpg"
 
-## Clipboard Screenshots
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+# Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id "maim | xclip -selection clipboard -t image/png"
+bindsym Ctrl+$mod+Print exec --no-startup-id "maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
+bindsym Ctrl+Shift+Print exec --no-startup-id "maim --select | xclip -selection clipboard -t image/png"
 
 # Launch PolyBar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -227,7 +227,7 @@ gaps outer 0
 default_border pixel 2
 
 # i3 lock
-bindsym $mod+shift+x exec $HOME/.config/i3/lock.sh
+bindsym $mod+shift+x exec "$HOME/.config/i3/lock.sh"
 
 # assign workspace
 assign [class="Signal"] $ws10
@@ -242,3 +242,5 @@ exec --no-startup-id blueman-manager
 exec --no-startup-id firefox
 exec --no-startup-id picom
 
+exec --no-startup-id i3-msg 'workspace $ws2; exec i3-sensible-terminal; workspace $ws1'
+exec --no-startup-id i3-msg 'workspace $ws2; exec i3-sensible-terminal; workspace $ws1'
