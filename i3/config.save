@@ -241,4 +241,5 @@ exec --no-startup-id blueman-manager
 
 exec --no-startup-id firefox
 exec --no-startup-id picom
-
+# exec i3-msg 'workspace 2; exec i3-sensible-terminal; workspace 1'
+# exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal; workspace 1'

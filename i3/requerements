@@ -1,15 +1,20 @@
+xorg-backlight tree termdown dmenu blueman nmtui net-tools maim xclip brightnessctl feh polybar xrandr picom xdotool
+
+---------------------------------------------------------
+
 xorg-backlight
-tree
-termdown
-volumeicon
-dmenu
-blueman
-nmtui
-net-tools
-maim
+tree  # listing files
+termdown  # counter in terminal
+dmenu  # simple menu
+blueman  # bluetooth UI
+nmtui  # network UI
+net-tools  # network tools
+maim  # takes screenshots
 xclip
-brightnessctl
-feh
-polybar  
+brightnessctl  # sets screen brightness
+feh  # image viewer
+polybar  # creates nice status bar
 xrandr
-picom
+picom  # opacity and nice transitions
+xdotool  # gets information about display
+

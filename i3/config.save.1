@@ -239,6 +239,10 @@ exec --no-startup-id desktop-habitica
 exec --no-startup-id signal-desktop
 exec --no-startup-id blueman-manager
 
-exec --no-startup-id firefox
+#exec --no-startup-id firefox
+exec --no-startup-id i3-msg 'workspace 3; exec firefox; workspace 1'
 exec --no-startup-id picom
 
+#exec --no-startup-id i3-sensible-terminal
+#exec i3-msg 'workspace 2; exec i3-sensible-terminal; workspace 1'
+exec --no-startup-id i3-msg 'workspace 2; exec i3-sensible-terminal; workspace 1'

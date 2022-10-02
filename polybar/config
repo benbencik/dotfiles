@@ -23,7 +23,7 @@ foreground = #FFFFFF
 primary = #FF2277
 secondary = #FF2277
 alert = #A54242
-disabled = #HHHHHH
+disabled = #666
 
 [bar/example]
 width = 100%
@@ -50,9 +50,11 @@ separator = |
 separator-foreground = ${colors.disabled}
 
 font-0 = hack:size=8;2
+font-1 = FontAwesome6Free:style=Solid:size=8;2
+font-2 = FontAwesome6Brands:style=Regular:size=8;2
 
 modules-left = xworkspaces xwindow
-modules-right = battery pulseaudio xkeyboard memory cpu wlan eth date
+modules-right = battery pulseaudio xkeyboard memory cpu wlan date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -66,6 +68,8 @@ enable-ipc = true
 ; wm-restack = i3
 
 ; override-redirect = true
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/xworkspaces]
 type = internal/xworkspaces
@@ -86,9 +90,13 @@ label-empty = %name%
 label-empty-foreground = ${colors.disabled}
 label-empty-padding = 1
 
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:60:...%
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/filesystem]
 type = internal/fs
@@ -101,43 +109,57 @@ label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.disabled}
 
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
 [module/pulseaudio]
 type = internal/pulseaudio
-
-format-volume-prefix = "VOL "
-format-volume-prefix-foreground = ${colors.primary}
-format-volume = <label-volume>
-
+	
+format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
 
-label-muted = muted
+	
+label-muted = 
 label-muted-foreground = ${colors.disabled}
+
+ramp-volume-0 =  
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = ${colors.primary}
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
+format-prefix = "  "
+format-prefix-foreground = ${colors.primary}
 label-layout = %layout%
-label-layout-foreground = ${colors.primary}
+label-layout-foreground = ${colors.foreground}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-foreground = ${colors.background}
-label-indicator-background = ${colors.secondary}
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "RAM "
+format-prefix = " "
 format-prefix-foreground = ${colors.primary}
 label = %percentage_used:2%%
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "CPU "
+format-prefix = " "
 format-prefix-foreground = ${colors.primary}
 label = %percentage:2%%
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [network-base]
 type = internal/network
@@ -146,15 +168,22 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
 
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
 [module/wlan]
 inherit = network-base
 interface-type = wireless
-label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
+#label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
+label-connected = %essid%
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/eth]
 inherit = network-base
 interface-type = wired
 label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/date]
 type = internal/date
@@ -166,6 +195,8 @@ date-alt = %Y-%m-%d %H:%M:%S
 label = %date%
 label-foreground = ${colors.primary}
 
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 [module/battery]
 
 type = internal/battery
@@ -175,6 +206,29 @@ battery = BAT0
 adapter = ADP1
 poll-interval = 5
 
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-full =  %percentage%
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.warning}
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.primary}
+
+animation-charging-0 = 
+# animation-charging-0 = 
+# animation-charging-1 = 
+# animation-charging-2 = 
+# animation-charging-3 = 
+# animation-charging-4 = 
+animation-charging-foreground = ${colors.primary}
+animation-charging-framerate = 750
+
+# _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [settings]
 screenchange-reload = true
