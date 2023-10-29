@@ -72,10 +72,9 @@ signal=10
 #
 # The battery instance defaults to 0.
 [battery]
-command=$SCRIPT_DIR/battery-poly/battery-poly
-label=bat 
-#label=⚡
-interval=30
+command=$SCRIPT_DIR/battery2/battery2
+markup=pango
+interval=10
 
 
 # Date Time
