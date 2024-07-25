@@ -353,7 +353,7 @@ bar {
     colors {
         background $term_background
         statusline #F9FAF9
-        separator  #454947
+        separator  #8f9190
 
 	#                      border  backgr. text
         focused_workspace  #F9FAF9 $term_color4     #292F34
@@ -446,21 +446,23 @@ exec_always --no-startup-id "xrandr --output eDP --scale 0.8x0.8 --output HDMI-A
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
 
-# assign workspace
+# assign workspaces
 assign [class="Signal"] $ws9
 
 assign [class="Habitica"] $ws9
 assign [class="Blueman-manager"] $ws8
-assign [class="Pavucontrol"] $ws8
+assign [class="pavucontrol"] $ws8
+assign [class="obsidian"] $ws7
 # assign [class="mocp"] $ws7
 
 # startup applications
-exec --no-startup-id "firefox"
-exec --no-startup-id "desktop-habitica"
+# exec --no-startup-id "desktop-habitica"
 exec --no-startup-id "signal-desktop"
 exec --no-startup-id "blueman-manager"
 exec --no-startup-id "pavucontrol"
 exec --no-startup-id "kteatime"
+exec --no-startup-id "obsidian"
+# exec --no-startup-id "firefox"
 
 # Pulse Audio controls 
 bindsym XF86AudioRaiseVolume exec --no-startup-id /usr/bin/pulseaudio-ctl up #increase sound volume 
