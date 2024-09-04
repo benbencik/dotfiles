@@ -8,7 +8,7 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 1
+default_border pixel 2
 default_floating_border normal
 
 # Hide borders
@@ -62,8 +62,8 @@ bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill picom
-bindsym $mod+Ctrl+t exec --no-startup-id picom -b
+# bindsym $mod+t exec --no-startup-id pkill picom
+# bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
@@ -291,12 +291,10 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
+exec_always --no-startup-id conky -c ../conky/conky_maia
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 
-# exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec_always --no-startup-id conky -c /usr/share/conky/conky_maia2
 
 exec --no-startup-id xautolock -time 60 -locker betterlockscreen -l
 exec_always --no-startup-id ff-theme-util
@@ -477,5 +475,5 @@ bindsym XF86AudioPrev exec playerctl previous
 
 exec_always --no-startup-id i3bar
 
-bindsym $mod+Tab workspace next 
+bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
